@@ -8,8 +8,8 @@
   <style>
     :root {
       --bg: #0a0a0a;
-      --panel: rgba(18,18,18,.88);
-      --panel-2: rgba(26,26,26,.92);
+      --panel: rgba(18,18,18,.90);
+      --panel-2: rgba(26,26,26,.94);
       --text: #f5f5f5;
       --muted: #c7c7c7;
       --line: rgba(255,255,255,.08);
@@ -39,10 +39,10 @@
       inset: 0;
       z-index: -2;
       background:
-        linear-gradient(180deg, rgba(8,8,8,.78), rgba(8,8,8,.78)),
-        linear-gradient(90deg, rgba(8,8,8,.78), rgba(8,8,8,.30) 45%, rgba(8,8,8,.82)),
+        linear-gradient(180deg, rgba(8,8,8,.84), rgba(8,8,8,.84)),
+        linear-gradient(90deg, rgba(8,8,8,.82), rgba(8,8,8,.38) 45%, rgba(8,8,8,.86)),
         url("tempImageeZvCSe.webp") center center / cover no-repeat;
-      opacity: .55;
+      opacity: .62;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -58,7 +58,7 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(10px);
-      background: rgba(10,10,10,.85);
+      background: rgba(10,10,10,.86);
       border-bottom: 1px solid var(--line);
     }
 
@@ -126,7 +126,7 @@
     }
 
     h1 {
-      margin: 16px 0 14px;
+      margin: 16px 0 12px;
       font-size: clamp(1.95rem, 4.2vw, 3.45rem);
       line-height: 1.05;
       letter-spacing: -.03em;
@@ -137,6 +137,13 @@
       color: var(--muted);
       font-size: 1.05rem;
       max-width: 62ch;
+    }
+
+    .local-trust {
+      margin-top: 12px;
+      color: #ffcfab;
+      font-weight: 700;
+      font-size: .98rem;
     }
 
     .hero-actions {
@@ -175,7 +182,6 @@
     .card,
     .highlight,
     .service,
-    .gallery-card,
     .cta {
       box-shadow: var(--shadow);
     }
@@ -286,46 +292,6 @@
 
     .service li + li { margin-top: 8px; }
 
-    .shop-gallery {
-      padding-top: 12px;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.35fr .85fr .85fr;
-      gap: 18px;
-      margin-top: 24px;
-    }
-
-    .gallery-card {
-      margin: 0;
-      min-height: 240px;
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: rgba(18,18,18,.88);
-      position: relative;
-    }
-
-    .gallery-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.16) 100%);
-      pointer-events: none;
-    }
-
-    .gallery-card.tall {
-      grid-row: span 2;
-      min-height: 100%;
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     .cta {
       margin: 10px 0 28px;
       padding: 28px;
@@ -388,19 +354,12 @@
       .hero-grid,
       .about-wrap,
       .contact-wrap,
-      .services-grid,
-      .gallery-grid {
+      .services-grid {
         grid-template-columns: 1fr;
       }
 
       .highlights {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .gallery-card,
-      .gallery-card.tall {
-        min-height: 220px;
-        grid-row: auto;
       }
 
       .cta {
@@ -459,9 +418,10 @@
           From routine service and hard-start issues to clutches, starters, fuel systems, and performance installs,
           we help keep your ride strong, reliable, and road-ready.
         </p>
+        <p class="local-trust">Serving Asheville riders with focused GY6 49cc and 150cc service.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="tel:18285892550">Call (828) 589-2550</a>
-          <a class="btn btn-secondary" href="mailto:gy6scooterepair@gmail.com">Email the Shop</a>
+          <a class="btn btn-secondary" href="mailto:gy6scooterepair@gmail.com?subject=Book%20an%20Appointment">Book an Appointment</a>
         </div>
       </div>
       <div class="hero-card">
@@ -571,7 +531,7 @@
     </div>
   </section>
 
-   <section>
+  <section>
     <div class="container">
       <div class="cta">
         <div>
@@ -611,7 +571,7 @@
           </div>
         </div>
         <div class="card">
-          <h3>Quick Message</h3>
+          <h3>Tell Us What Your Scooter Needs</h3>
           <p>
             Let us know your scooter model, the issue you are having, and any parts or upgrades you want installed.
             The more details you send, the faster we can help you get scheduled.
