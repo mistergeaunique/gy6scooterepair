@@ -8,171 +8,305 @@
   <style>
     :root {
       --bg: #0a0a0a;
-      --panel: #121212;
-      --panel-2: #1a1a1a;
+      --panel: rgba(18,18,18,.88);
+      --panel-2: rgba(26,26,26,.92);
       --text: #f5f5f5;
       --muted: #c7c7c7;
-      --line: #2a2a2a;
+      --line: rgba(255,255,255,.08);
       --accent: #ff6a00;
       --accent-2: #ff2a00;
-      --steel: #cfd3d8;
+      --shadow: 0 24px 60px rgba(0,0,0,.35);
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
       background:
         radial-gradient(circle at top, rgba(255,106,0,.18), transparent 32%),
         linear-gradient(180deg, #111 0%, #080808 100%);
-      color: var(--text);
-      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(180deg, rgba(8,8,8,.78), rgba(8,8,8,.78)),
+        linear-gradient(90deg, rgba(8,8,8,.78), rgba(8,8,8,.30) 45%, rgba(8,8,8,.82)),
+        url("tempImageeZvCSe.webp") center center / cover no-repeat;
+      opacity: .55;
+    }
+
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
     .nav {
-      position: sticky; top: 0; z-index: 50;
+      position: sticky;
+      top: 0;
+      z-index: 50;
       backdrop-filter: blur(10px);
       background: rgba(10,10,10,.85);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid var(--line);
     }
+
     .nav-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 18px; padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 0;
     }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .4px; }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .3px;
+      font-size: .98rem;
+    }
+
     .brand-badge {
-      width: 40px; height: 40px; border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       box-shadow: 0 0 30px rgba(255,106,0,.35);
-      display: grid; place-items: center; font-weight: 900;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      flex: 0 0 auto;
     }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 14px; }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     .nav-links a:hover { color: var(--text); }
 
-    .hero { padding: 48px 0 34px; }
+    .hero {
+      padding: 42px 0 34px;
+    }
+
     .hero-grid {
-      display: grid; grid-template-columns: 1.15fr .85fr; gap: 34px; align-items: center;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: center;
     }
+
     .eyebrow {
-      display: inline-block; padding: 8px 14px; border-radius: 999px;
-      background: rgba(255,106,0,.12); color: #ffd7be; border: 1px solid rgba(255,106,0,.24);
-      font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,106,0,.12);
+      color: #ffd7be;
+      border: 1px solid rgba(255,106,0,.24);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
+
     h1 {
-      margin: 18px 0 16px; font-size: clamp(2.2rem, 5vw, 4.4rem);
-      line-height: 1.02; letter-spacing: -.03em;
+      margin: 16px 0 14px;
+      font-size: clamp(1.95rem, 4.2vw, 3.45rem);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      max-width: 12ch;
     }
-    .lead { color: var(--muted); font-size: 1.08rem; max-width: 62ch; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
     .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-height: 48px; padding: 0 20px; border-radius: 14px; font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 14px;
+      font-weight: 800;
       transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
+
     .btn:hover { transform: translateY(-1px); }
+
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white; box-shadow: 0 14px 32px rgba(255,106,0,.24);
+      color: white;
+      box-shadow: 0 14px 32px rgba(255,106,0,.24);
     }
+
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
       color: var(--text);
     }
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 26px; padding: 18px;
-      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+
+    .hero-card,
+    .card,
+    .highlight,
+    .service,
+    .gallery-card,
+    .cta {
+      box-shadow: var(--shadow);
     }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 18px;
+    }
+
     .hero-card img {
-      width: 100%; height: auto; border-radius: 20px; background: #000;
+      width: 100%;
+      border-radius: 20px;
+      background: #000;
       object-fit: contain;
     }
 
     .highlights {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 8px 0 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 8px 0 48px;
     }
+
     .highlight {
-      background: var(--panel); border: 1px solid rgba(255,255,255,.07); border-radius: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
       padding: 18px;
+      backdrop-filter: blur(3px);
     }
-    .highlight strong { display: block; font-size: 1.1rem; margin-bottom: 6px; }
-    .highlight span { color: var(--muted); font-size: .96rem; }
+
+    .highlight strong {
+      display: block;
+      font-size: 1.08rem;
+      margin-bottom: 6px;
+    }
+
+    .highlight span {
+      color: var(--muted);
+      font-size: .96rem;
+    }
 
     section { padding: 34px 0; }
-    .section-title { font-size: clamp(1.7rem, 3vw, 2.6rem); margin: 0 0 12px; }
-    .section-copy { color: var(--muted); max-width: 75ch; margin-bottom: 24px; }
 
-    .about-wrap, .contact-wrap {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      margin: 0 0 12px;
     }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 75ch;
+      margin-bottom: 24px;
+    }
+
+    .about-wrap,
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
     .card {
       background: linear-gradient(180deg, var(--panel), var(--panel-2));
-      border: 1px solid rgba(255,255,255,.07); border-radius: 22px; padding: 24px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.22);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      backdrop-filter: blur(4px);
     }
-    .card h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.2rem; }
-    .card p { margin: 0; color: var(--muted); }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
 
     .services-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
     }
+
     .service {
       background: linear-gradient(180deg, rgba(255,106,0,.07), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      backdrop-filter: blur(3px);
     }
-    .service h3 { margin: 0 0 10px; font-size: 1.2rem; }
-    .service ul { margin: 0; padding-left: 18px; color: var(--muted); }
+
+    .service h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .service ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
     .service li + li { margin-top: 8px; }
 
-    .cta {
-      margin: 10px 0 28px; padding: 28px;
-      border-radius: 26px; border: 1px solid rgba(255,255,255,.08);
-      background:
-        radial-gradient(circle at right top, rgba(255,106,0,.22), transparent 28%),
-        linear-gradient(180deg, #181818, #121212);
-      display: flex; justify-content: space-between; gap: 22px; align-items: center;
-    }
-    .cta h3 { margin: 0 0 8px; font-size: 1.6rem; }
-    .cta p { margin: 0; color: var(--muted); }
-
-    .contact-list {
-      display: grid; gap: 14px;
-    }
-    .contact-item {
-      padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-    }
-    .label { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: #ffb88f; margin-bottom: 4px; }
-    .value { font-size: 1.06rem; font-weight: 700; }
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding: 22px 0 40px; color: #acacac; font-size: .95rem;
-    }
-
-
     .shop-gallery {
-      padding: 28px 0 10px;
+      padding-top: 12px;
     }
+
     .gallery-grid {
       display: grid;
       grid-template-columns: 1.35fr .85fr .85fr;
       gap: 18px;
       margin-top: 24px;
     }
+
     .gallery-card {
       margin: 0;
       min-height: 240px;
       border-radius: 22px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.08);
+      border: 1px solid var(--line);
       background: rgba(18,18,18,.88);
-      box-shadow: var(--shadow);
       position: relative;
     }
+
     .gallery-card::after {
       content: "";
       position: absolute;
@@ -180,28 +314,123 @@
       background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.16) 100%);
       pointer-events: none;
     }
+
     .gallery-card.tall {
       grid-row: span 2;
       min-height: 100%;
     }
+
     .gallery-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
+    .cta {
+      margin: 10px 0 28px;
+      padding: 28px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at right top, rgba(255,106,0,.22), transparent 28%),
+        linear-gradient(180deg, rgba(24,24,24,.96), rgba(18,18,18,.96));
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      align-items: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .cta h3 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+    }
+
+    .cta p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .label {
+      display: block;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #ffb88f;
+      margin-bottom: 4px;
+    }
+
+    .value {
+      font-size: 1.06rem;
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 22px 0 40px;
+      color: #acacac;
+      font-size: .95rem;
+    }
 
     @media (max-width: 900px) {
-      .hero-grid, .about-wrap, .contact-wrap, .services-grid { grid-template-columns: 1fr; }
-      .highlights { grid-template-columns: repeat(2, 1fr); }
-      .cta { flex-direction: column; align-items: flex-start; }
+      .hero-grid,
+      .about-wrap,
+      .contact-wrap,
+      .services-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .highlights {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-card,
+      .gallery-card.tall {
+        min-height: 220px;
+        grid-row: auto;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
+
     @media (max-width: 640px) {
-      .nav-inner { flex-direction: column; align-items: flex-start; }
-      .highlights { grid-template-columns: 1fr; }
-      .hero { padding-top: 28px; }
-      .card, .service { padding: 20px; }
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .card,
+      .service {
+        padding: 20px;
+      }
+
+      .brand {
+        font-size: .9rem;
+      }
     }
   </style>
 </head>
@@ -308,7 +537,7 @@
           </ul>
         </article>
         <article class="service">
-          <h3>Maintenance Service</h3>
+          <h3>Maintenance Services</h3>
           <ul>
             <li>Brake pad replacement and brake adjustments</li>
             <li>Oil changes</li>
@@ -338,6 +567,26 @@
             <li>Additional bolt-on upgrades and accessories</li>
           </ul>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="shop-gallery" id="shop-gallery">
+    <div class="container">
+      <h2 class="section-title">Inside the Shop</h2>
+      <p class="section-copy">
+        Real shop photos, real service space, and the kind of scooter repair setup riders trust for maintenance, repairs, diagnostics, and upgrades.
+      </p>
+      <div class="gallery-grid">
+        <figure class="gallery-card tall">
+          <img src="tempImageeZvCSe.webp" alt="Scooter repair shop interior with multiple service lifts" />
+        </figure>
+        <figure class="gallery-card">
+          <img src="20180629_112649-745x362.jpg" alt="Blue scooter on service lift inside repair shop" />
+        </figure>
+        <figure class="gallery-card">
+          <img src="images (5).jpg" alt="Scooter inside repair workspace" />
+        </figure>
       </div>
     </div>
   </section>
