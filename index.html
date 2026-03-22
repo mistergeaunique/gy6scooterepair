@@ -7,162 +7,424 @@
   <meta name="description" content="The GY6 Scooter Repair Shop in Asheville, NC offers GY6 49cc and 150cc scooter repair, maintenance, diagnostics, and performance upgrades by appointment." />
   <style>
     :root {
-      --bg: #0a0a0a;
-      --panel: #121212;
-      --panel-2: #1a1a1a;
-      --text: #f5f5f5;
-      --muted: #c7c7c7;
-      --line: #2a2a2a;
-      --accent: #ff6a00;
-      --accent-2: #ff2a00;
-      --steel: #cfd3d8;
+      --bg: #090909;
+      --bg-2: #121212;
+      --panel: rgba(20, 20, 20, 0.84);
+      --panel-2: rgba(28, 28, 28, 0.92);
+      --text: #f7f7f7;
+      --muted: #cbc7c1;
+      --muted-2: #a8a29b;
+      --line: rgba(255,255,255,.09);
+      --accent: #ff7a00;
+      --accent-2: #ff4d00;
+      --accent-soft: rgba(255,122,0,.14);
+      --gold: #ffc46b;
+      --shadow: 0 24px 60px rgba(0,0,0,.38);
+      --radius: 24px;
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(255,106,0,.18), transparent 32%),
-        linear-gradient(180deg, #111 0%, #080808 100%);
       color: var(--text);
       line-height: 1.6;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255,122,0,.20), transparent 26%),
+        radial-gradient(circle at 92% 16%, rgba(255,77,0,.12), transparent 18%),
+        linear-gradient(180deg, rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(180deg, #121212 0%, #0a0a0a 24%, #070707 100%);
+      background-size: auto, auto, 44px 44px, 44px 44px, auto;
+      overflow-x: hidden;
     }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.35)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.012) 0 3px, transparent 3px 16px);
+      mix-blend-mode: screen;
+      opacity: .34;
+    }
+
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .container { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+
     .nav {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(10,10,10,.85);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 7, 7, .78);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .nav-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 18px; padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 0;
     }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .4px; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
     .brand-badge {
-      width: 40px; height: 40px; border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 30px rgba(255,106,0,.35);
-      display: grid; place-items: center; font-weight: 900;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 26px rgba(255,122,0,.36);
+      font-weight: 900;
     }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 14px; }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
     .nav-links a:hover { color: var(--text); }
 
-    .hero { padding: 48px 0 34px; }
+    .hero {
+      position: relative;
+      padding: 56px 0 30px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 560px;
+      background:
+        linear-gradient(180deg, rgba(255,122,0,.08), transparent 38%),
+        radial-gradient(circle at 78% 28%, rgba(255,122,0,.16), transparent 18%),
+        linear-gradient(180deg, rgba(255,255,255,.05), transparent 2px),
+        linear-gradient(90deg, rgba(255,255,255,.03), transparent 1px);
+      background-size: auto, auto, auto, 90px 100%;
+      opacity: .9;
+      pointer-events: none;
+    }
     .hero-grid {
-      display: grid; grid-template-columns: 1.15fr .85fr; gap: 34px; align-items: center;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 34px;
+      align-items: center;
     }
     .eyebrow {
-      display: inline-block; padding: 8px 14px; border-radius: 999px;
-      background: rgba(255,106,0,.12); color: #ffd7be; border: 1px solid rgba(255,106,0,.24);
-      font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(255,122,0,.13);
+      color: #ffd5a5;
+      border: 1px solid rgba(255,122,0,.24);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 14px rgba(255,196,107,.8);
     }
     h1 {
-      margin: 18px 0 16px; font-size: clamp(2.2rem, 5vw, 4.4rem);
-      line-height: 1.02; letter-spacing: -.03em;
+      margin: 18px 0 14px;
+      font-size: clamp(2.4rem, 5.6vw, 4.9rem);
+      line-height: .98;
+      letter-spacing: -.045em;
+      max-width: 11ch;
     }
-    .lead { color: var(--muted); font-size: 1.08rem; max-width: 62ch; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .lead {
+      color: var(--muted);
+      font-size: 1.07rem;
+      max-width: 63ch;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
     .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-height: 48px; padding: 0 20px; border-radius: 14px; font-weight: 800;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
     }
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-2px); }
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white; box-shadow: 0 14px 32px rgba(255,106,0,.24);
+      color: white;
+      box-shadow: 0 14px 32px rgba(255,122,0,.24);
     }
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
       color: var(--text);
     }
+    .btn-secondary:hover { background: rgba(255,255,255,.06); }
+
     .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 26px; padding: 18px;
-      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+      position: relative;
+      padding: 18px;
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        linear-gradient(135deg, rgba(255,122,0,.10), rgba(255,77,0,.04));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 72%, rgba(0,0,0,.35) 100%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 34px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .hero-card::after {
+      content: "Certified GY6 Service";
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(0,0,0,.54);
+      border: 1px solid rgba(255,255,255,.10);
+      color: #ffd5a5;
     }
     .hero-card img {
-      width: 100%; height: auto; border-radius: 20px; background: #000;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
       object-fit: contain;
+      background: radial-gradient(circle at center, rgba(255,122,0,.10), rgba(0,0,0,.82));
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .trust-strip {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .trust-item {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: .94rem;
     }
 
     .highlights {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 8px 0 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 14px 0 54px;
     }
     .highlight {
-      background: var(--panel); border: 1px solid rgba(255,255,255,.07); border-radius: 18px;
-      padding: 18px;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(255,122,0,.08), rgba(255,255,255,.02)),
+        linear-gradient(180deg, rgba(30,30,30,.94), rgba(20,20,20,.94));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 22px;
+      padding: 20px;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
     }
-    .highlight strong { display: block; font-size: 1.1rem; margin-bottom: 6px; }
-    .highlight span { color: var(--muted); font-size: .96rem; }
+    .highlight::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    .highlight strong {
+      display: block;
+      font-size: 1.08rem;
+      margin-bottom: 6px;
+    }
+    .highlight span {
+      color: var(--muted);
+      font-size: .96rem;
+    }
 
-    section { padding: 34px 0; }
-    .section-title { font-size: clamp(1.7rem, 3vw, 2.6rem); margin: 0 0 12px; }
-    .section-copy { color: var(--muted); max-width: 75ch; margin-bottom: 24px; }
+    section { padding: 36px 0; }
+    .section-shell {
+      position: relative;
+      padding: 28px;
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)),
+        linear-gradient(180deg, rgba(18,18,18,.88), rgba(12,12,12,.95));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .section-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 70px 70px;
+      pointer-events: none;
+      opacity: .25;
+    }
+    .section-title {
+      position: relative;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      margin: 0 0 12px;
+      z-index: 1;
+    }
+    .section-copy {
+      position: relative;
+      color: var(--muted);
+      max-width: 76ch;
+      margin-bottom: 24px;
+      z-index: 1;
+    }
 
     .about-wrap, .contact-wrap {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      z-index: 1;
     }
     .card {
-      background: linear-gradient(180deg, var(--panel), var(--panel-2));
-      border: 1px solid rgba(255,255,255,.07); border-radius: 22px; padding: 24px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.22);
+      background:
+        linear-gradient(180deg, rgba(255,122,0,.05), rgba(255,255,255,.02)),
+        linear-gradient(180deg, rgba(26,26,26,.95), rgba(18,18,18,.98));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.24);
     }
-    .card h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.2rem; }
-    .card p { margin: 0; color: var(--muted); }
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.18rem;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
 
     .services-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      z-index: 1;
     }
     .service {
-      background: linear-gradient(180deg, rgba(255,106,0,.07), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,122,0,.08), rgba(255,255,255,.02)),
+        linear-gradient(180deg, rgba(29,29,29,.95), rgba(18,18,18,.98));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.18);
     }
-    .service h3 { margin: 0 0 10px; font-size: 1.2rem; }
+    .service h3 { margin: 0 0 10px; font-size: 1.18rem; }
     .service ul { margin: 0; padding-left: 18px; color: var(--muted); }
     .service li + li { margin-top: 8px; }
 
     .cta {
-      margin: 10px 0 28px; padding: 28px;
-      border-radius: 26px; border: 1px solid rgba(255,255,255,.08);
+      margin: 12px 0 28px;
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.08);
       background:
-        radial-gradient(circle at right top, rgba(255,106,0,.22), transparent 28%),
-        linear-gradient(180deg, #181818, #121212);
-      display: flex; justify-content: space-between; gap: 22px; align-items: center;
+        radial-gradient(circle at right top, rgba(255,122,0,.26), transparent 24%),
+        linear-gradient(180deg, rgba(22,22,22,.96), rgba(14,14,14,.98));
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      align-items: center;
+      box-shadow: var(--shadow);
     }
-    .cta h3 { margin: 0 0 8px; font-size: 1.6rem; }
-    .cta p { margin: 0; color: var(--muted); }
+    .cta h3 { margin: 0 0 8px; font-size: 1.7rem; }
+    .cta p { margin: 0; color: var(--muted); max-width: 58ch; }
 
     .contact-list {
-      display: grid; gap: 14px;
+      display: grid;
+      gap: 14px;
     }
     .contact-item {
-      padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
     }
-    .label { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: #ffb88f; margin-bottom: 4px; }
+    .label {
+      display: block;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #ffb88f;
+      margin-bottom: 4px;
+    }
     .value { font-size: 1.06rem; font-weight: 700; }
 
     footer {
       border-top: 1px solid rgba(255,255,255,.08);
-      padding: 22px 0 40px; color: #acacac; font-size: .95rem;
+      padding: 24px 0 42px;
+      color: var(--muted-2);
+      font-size: .95rem;
     }
 
     @media (max-width: 900px) {
       .hero-grid, .about-wrap, .contact-wrap, .services-grid { grid-template-columns: 1fr; }
       .highlights { grid-template-columns: repeat(2, 1fr); }
       .cta { flex-direction: column; align-items: flex-start; }
+      h1 { max-width: none; }
     }
     @media (max-width: 640px) {
       .nav-inner { flex-direction: column; align-items: flex-start; }
+      .hero { padding-top: 32px; }
       .highlights { grid-template-columns: 1fr; }
-      .hero { padding-top: 28px; }
-      .card, .service { padding: 20px; }
+      .section-shell, .cta, .card, .service { padding: 20px; }
+      .hero-card::after {
+        position: static;
+        display: inline-block;
+        margin-bottom: 12px;
+      }
     }
   </style>
 </head>
@@ -185,15 +447,20 @@
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">Asheville, NC • Appointments Only</span>
-        <h1>GY6 Scooter Repair, Diagnostics, Maintenance, and Upgrades Done Right.</h1>
+        <h1>Real GY6 Scooter Service With a Shop Look That Hits Different.</h1>
         <p class="lead">
           The GY6 Scooter Repair Shop specializes in <strong>49cc and 150cc 4-stroke GY6 scooters</strong>.
-          From routine service and hard-start issues to clutches, starters, fuel systems, and performance installs,
-          we help keep your ride strong, reliable, and road-ready.
+          From tune-ups and no-start issues to clutches, starters, fuel systems, wiring, and performance installs,
+          we help keep your ride sharp, dependable, and road-ready.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="tel:18285892550">Call (828) 589-2550</a>
-          <a class="btn btn-secondary" href="mailto:gy6scooterepair@gmail.com">Email the Shop</a>
+          <a class="btn btn-secondary" href="mailto:gy6scooterepair@gmail.com?subject=Book%20a%20GY6%20Appointment">Book by Email</a>
+        </div>
+        <div class="trust-strip">
+          <span class="trust-item">GY6 49cc & 150cc Focused</span>
+          <span class="trust-item">Repairs • Diagnostics • Upgrades</span>
+          <span class="trust-item">By Appointment Only</span>
         </div>
       </div>
       <div class="hero-card">
@@ -206,45 +473,47 @@
     <div class="highlights">
       <div class="highlight">
         <strong>49cc & 150cc GY6</strong>
-        <span>Focused service for common 4-stroke GY6 scooter platforms.</span>
+        <span>Focused service for the 4-stroke platforms riders bring in the most.</span>
       </div>
       <div class="highlight">
         <strong>Repair & Diagnostics</strong>
-        <span>Electrical, fuel, starter, clutch, and mechanical troubleshooting.</span>
+        <span>No-start issues, fuel delivery, electrical faults, clutch problems, and more.</span>
       </div>
       <div class="highlight">
-        <strong>Maintenance & Tune-Ups</strong>
-        <span>Oil changes, spark plugs, valve checks, brakes, and routine service.</span>
+        <strong>Maintenance Services</strong>
+        <span>Oil changes, spark plugs, valve checks, brake service, and routine upkeep.</span>
       </div>
       <div class="highlight">
         <strong>Performance Installs</strong>
-        <span>CDIs, mufflers, fuel pumps, big bore kits, and more.</span>
+        <span>CDIs, mufflers, fuel pumps, big bore kits, and other bolt-on upgrades.</span>
       </div>
     </div>
   </div>
 
   <section id="about">
     <div class="container">
-      <h2 class="section-title">About the Shop</h2>
-      <p class="section-copy">
-        Welcome to <strong>The GY6 Scooter Repair Shop</strong>. We are built for riders who need dependable GY6 service without the guesswork.
-        Whether your scooter needs a tune-up, a no-start diagnosis, clutch work, fuel system repair, or performance parts installed,
-        we focus on getting the problem handled correctly and getting you back on the road.
-      </p>
-      <div class="about-wrap">
-        <div class="card">
-          <h3>What We Work On</h3>
-          <p>
-            We specialize in <strong>GY6 49cc and 150cc 4-stroke gas scooters</strong>. That includes routine maintenance,
-            electrical troubleshooting, fuel delivery issues, starting problems, drivetrain repairs, and upgrade installs.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Why Riders Choose Us</h3>
-          <p>
-            Honest service, focused GY6 knowledge, and work aimed at reliability, performance, and ride quality.
-            We are here to keep your scooter safe, responsive, and ready to roll.
-          </p>
+      <div class="section-shell">
+        <h2 class="section-title">About the Shop</h2>
+        <p class="section-copy">
+          Welcome to <strong>The GY6 Scooter Repair Shop</strong>. We built this shop for riders who want focused GY6 work without the runaround.
+          Whether your scooter needs basic service, a hard-start diagnosis, clutch work, fuel system repair, or performance parts installed,
+          we work to get it handled right and get you back on the road with confidence.
+        </p>
+        <div class="about-wrap">
+          <div class="card">
+            <h3>What We Work On</h3>
+            <p>
+              We specialize in <strong>GY6 49cc and 150cc 4-stroke gas scooters</strong>. That includes routine maintenance,
+              electrical troubleshooting, fuel delivery issues, starting problems, drivetrain repairs, and upgrade installs.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Why Riders Choose Us</h3>
+            <p>
+              Honest service, focused GY6 knowledge, and work aimed at reliability, performance, and ride quality.
+              We are here to keep your scooter responsive, safe, and ready to roll.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -252,53 +521,55 @@
 
   <section id="services">
     <div class="container">
-      <h2 class="section-title">Services</h2>
-      <p class="section-copy">
-        From small fixes to larger repair jobs and upgrade installs, these are some of the services we offer.
-      </p>
-      <div class="services-grid">
-        <article class="service">
-          <h3>GY6 Repairs</h3>
-          <ul>
-            <li>Battery replacement</li>
-            <li>Throttle repair</li>
-            <li>Starter replacement</li>
-            <li>Clutch repair</li>
-            <li>Wiring fixes and electrical troubleshooting</li>
-            <li>Motor and drivetrain repair</li>
-          </ul>
-        </article>
-        <article class="service">
-          <h3>Maintenance Service</h3>
-          <ul>
-            <li>Brake pad replacement and brake adjustments</li>
-            <li>Oil changes</li>
-            <li>Spark plug replacement</li>
-            <li>Valve clearance adjustments</li>
-            <li>General service checks</li>
-            <li>Fuel system service</li>
-          </ul>
-        </article>
-        <article class="service">
-          <h3>Diagnostics</h3>
-          <ul>
-            <li>Electrical diagnostics</li>
-            <li>Mechanical troubleshooting</li>
-            <li>No-start and poor-performance diagnosis</li>
-            <li>Structural issue inspection</li>
-            <li>Fuel delivery and pump checks</li>
-          </ul>
-        </article>
-        <article class="service">
-          <h3>Upgrades & Parts Installation</h3>
-          <ul>
-            <li>CDIs and ignition components</li>
-            <li>Mufflers and performance exhaust parts</li>
-            <li>Electric fuel pump installation and replacement</li>
-            <li>Big bore kit installation</li>
-            <li>Additional bolt-on upgrades and accessories</li>
-          </ul>
-        </article>
+      <div class="section-shell">
+        <h2 class="section-title">Services</h2>
+        <p class="section-copy">
+          From quick fixes to full upgrade installs, here are some of the core services offered at the shop.
+        </p>
+        <div class="services-grid">
+          <article class="service">
+            <h3>GY6 Repairs</h3>
+            <ul>
+              <li>Battery replacement</li>
+              <li>Throttle repair</li>
+              <li>Starter replacement</li>
+              <li>Clutch repair</li>
+              <li>Wiring fixes and electrical troubleshooting</li>
+              <li>Motor and drivetrain repair</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Maintenance Services</h3>
+            <ul>
+              <li>Brake pad replacement and brake adjustments</li>
+              <li>Oil changes</li>
+              <li>Spark plug replacement</li>
+              <li>Valve clearance adjustments</li>
+              <li>General service checks</li>
+              <li>Fuel system service</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Diagnostics</h3>
+            <ul>
+              <li>Electrical diagnostics</li>
+              <li>Mechanical troubleshooting</li>
+              <li>No-start and poor-performance diagnosis</li>
+              <li>Structural issue inspection</li>
+              <li>Fuel delivery and pump checks</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Upgrades &amp; Parts Installation</h3>
+            <ul>
+              <li>CDIs and ignition components</li>
+              <li>Mufflers and performance exhaust parts</li>
+              <li>Electric fuel pump installation and replacement</li>
+              <li>Big bore kit installation</li>
+              <li>Additional bolt-on upgrades and accessories</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -308,7 +579,7 @@
       <div class="cta">
         <div>
           <h3>Need your scooter looked at?</h3>
-          <p>Book an appointment with The GY6 Scooter Repair Shop in Asheville, NC and let’s get your ride back in shape.</p>
+          <p>Book an appointment with The GY6 Scooter Repair Shop in Asheville, NC and let’s get your ride back in shape with service that looks and feels dialed in.</p>
         </div>
         <a class="btn btn-primary" href="#contact">Book Service</a>
       </div>
@@ -317,40 +588,42 @@
 
   <section id="contact">
     <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <p class="section-copy">
-        Service is available by appointment. Reach out by phone or email to schedule your scooter repair or service.
-      </p>
-      <div class="contact-wrap">
-        <div class="card">
-          <div class="contact-list">
-            <div class="contact-item">
-              <span class="label">Phone</span>
-              <a class="value" href="tel:18285892550">(828) 589-2550</a>
-            </div>
-            <div class="contact-item">
-              <span class="label">Email</span>
-              <a class="value" href="mailto:gy6scooterepair@gmail.com">gy6scooterepair@gmail.com</a>
-            </div>
-            <div class="contact-item">
-              <span class="label">Business Hours</span>
-              <span class="value">Appointments Only</span>
-            </div>
-            <div class="contact-item">
-              <span class="label">Location</span>
-              <span class="value">Asheville, NC</span>
+      <div class="section-shell">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-copy">
+          Service is available by appointment. Reach out by phone or email to schedule your scooter repair, maintenance, or upgrade work.
+        </p>
+        <div class="contact-wrap">
+          <div class="card">
+            <div class="contact-list">
+              <div class="contact-item">
+                <span class="label">Phone</span>
+                <a class="value" href="tel:18285892550">(828) 589-2550</a>
+              </div>
+              <div class="contact-item">
+                <span class="label">Email</span>
+                <a class="value" href="mailto:gy6scooterepair@gmail.com">gy6scooterepair@gmail.com</a>
+              </div>
+              <div class="contact-item">
+                <span class="label">Business Hours</span>
+                <span class="value">Appointments Only</span>
+              </div>
+              <div class="contact-item">
+                <span class="label">Location</span>
+                <span class="value">Asheville, NC</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card">
-          <h3>Quick Message</h3>
-          <p>
-            Let us know your scooter model, the issue you are having, and any parts or upgrades you want installed.
-            The more details you send, the faster we can help you get scheduled.
-          </p>
-          <div class="hero-actions" style="margin-top:20px;">
-            <a class="btn btn-primary" href="mailto:gy6scooterepair@gmail.com?subject=GY6%20Scooter%20Service%20Request">Send Email</a>
-            <a class="btn btn-secondary" href="tel:18285892550">Call Now</a>
+          <div class="card">
+            <h3>Quick Message</h3>
+            <p>
+              Send your scooter model, the issue you are having, and any parts or upgrades you want installed.
+              The more details you include, the faster the shop can help get you scheduled.
+            </p>
+            <div class="hero-actions" style="margin-top:20px;">
+              <a class="btn btn-primary" href="mailto:gy6scooterepair@gmail.com?subject=GY6%20Scooter%20Service%20Request">Send Email</a>
+              <a class="btn btn-secondary" href="tel:18285892550">Call Now</a>
+            </div>
           </div>
         </div>
       </div>
